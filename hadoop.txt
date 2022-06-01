@@ -1,0 +1,88 @@
+hduser@bmsce-Precision-T1700:~$ hdfs dfs -mkdir /sff
+hduser@bmsce-Precision-T1700:~$ ls
+ derby.log                                      PersonDemo.class
+ Desktop                                        PersonDemo.java
+ Documents                                      Pictures
+ Downloads                                      pig_1564816082257.log
+ Exam.class                                     pt
+ examples.desktop                               PT72Installer
+ hadoop-2.6.0.tar.gz                            Public
+ hive                                           R
+ metastore_db                                   Student.class
+ Music                                          Templates
+'Packet Tracer 7.2.1 for Linux 64 bit.tar.gz'   toinstalledlist
+ Person.class                                   Videos
+hduser@bmsce-Precision-T1700:~$ ls -l
+total 495124
+-rw-r--r--  1 hduser hadoop       667 Sep 14  2020  derby.log
+drwxr-xr-x  3 hduser hadoop      4096 May 31 10:05  Desktop
+drwxr-xr-x  2 hduser hadoop      4096 Aug  1  2019  Documents
+drwxr-xr-x  2 hduser hadoop      4096 May 31 10:12  Downloads
+-rw-r--r--  1 hduser hadoop      1300 Sep 13  2019  Exam.class
+-rwxrwxrwx  1 hduser hadoop      8980 Aug  1  2019  examples.desktop
+-rw-r--r--  1 hduser hadoop 195257604 Nov 23  2018  hadoop-2.6.0.tar.gz
+drwxr-xr-x  3 hduser hadoop      4096 Aug  1  2019  hive
+drwxr-xr-x  5 hduser hadoop      4096 Sep 14  2020  metastore_db
+drwxr-xr-x  2 hduser hadoop      4096 Aug  1  2019  Music
+-rw-rw-r--  1 hduser hadoop 311645539 Aug  1  2019 'Packet Tracer 7.2.1 for Linux 64 bit.tar.gz'
+-rw-r--r--  1 hduser hadoop      1299 Sep 13  2019  Person.class
+-rw-r--r--  1 hduser hadoop       918 Sep 13  2019  PersonDemo.class
+-rw-r--r--  1 hduser hadoop      1480 Sep 13  2019  PersonDemo.java
+drwxr-xr-x  2 hduser hadoop      4096 Aug  1  2019  Pictures
+-rw-r--r--  1 hduser hadoop      2615 Aug  3  2019  pig_1564816082257.log
+drwxr-xr-x  6 hduser hadoop      4096 Aug  1  2019  pt
+drwxr-xr-x 11 hduser hadoop      4096 Aug  1  2019  PT72Installer
+drwxr-xr-x  2 hduser hadoop      4096 Aug  1  2019  Public
+drwxr-xr-x  3 hduser hadoop      4096 Aug  2  2019  R
+-rw-r--r--  1 hduser hadoop      1169 Sep 13  2019  Student.class
+drwxr-xr-x  2 hduser hadoop      4096 Aug  1  2019  Templates
+-rw-r--r--  1 hduser hadoop        40 Aug  1  2019  toinstalledlist
+drwxr-xr-x  2 hduser hadoop      4096 Aug  1  2019  Videos
+hduser@bmsce-Precision-T1700:~$ hadoop fs -ls /
+Found 6 items
+drwxr-xr-x   - hduser supergroup          0 2022-05-31 10:16 /ABC
+drwxr-xr-x   - hduser supergroup          0 2022-05-31 10:17 /DEF
+drwxr-xr-x   - hduser supergroup          0 2022-05-31 10:06 /GHI
+drwxr-xr-x   - hduser supergroup          0 2022-06-01 09:31 /sff
+drwxrwxr-x   - hduser supergroup          0 2019-08-01 16:19 /tmp
+drwxr-xr-x   - hduser supergroup          0 2019-08-01 16:03 /user
+hduser@bmsce-Precision-T1700:~$ hdfs dfs -put /home/hduser/Desktop/Welcome.txt /sff/abc.txt
+put: `/home/hduser/Desktop/Welcome.txt': No such file or directory
+hduser@bmsce-Precision-T1700:~$ hdfs dfs -put /home/hduser/Desktop/welcome.txt /sff/abc.txt
+hduser@bmsce-Precision-T1700:~$ hadoop fs -ls /
+Found 6 items
+drwxr-xr-x   - hduser supergroup          0 2022-05-31 10:16 /ABC
+drwxr-xr-x   - hduser supergroup          0 2022-05-31 10:17 /DEF
+drwxr-xr-x   - hduser supergroup          0 2022-05-31 10:06 /GHI
+drwxr-xr-x   - hduser supergroup          0 2022-06-01 09:36 /sff
+drwxrwxr-x   - hduser supergroup          0 2019-08-01 16:19 /tmp
+drwxr-xr-x   - hduser supergroup          0 2019-08-01 16:03 /user
+hduser@bmsce-Precision-T1700:~$ hdfs dls -ls /sff/
+Error: Could not find or load main class dls
+hduser@bmsce-Precision-T1700:~$ hdfs dls -ls /sff
+Error: Could not find or load main class dls
+hduser@bmsce-Precision-T1700:~$ hdfs dfs -ls /sff
+Found 1 items
+-rw-r--r--   1 hduser supergroup         24 2022-06-01 09:36 /sff/abc.txt
+hduser@bmsce-Precision-T1700:~$ hdfs dfs -ls /sff/abc.txt
+-rw-r--r--   1 hduser supergroup         24 2022-06-01 09:36 /sff/abc.txt
+hduser@bmsce-Precision-T1700:~$ hdfs dfs -cat /sff/abc.txt
+hi hello how you doing?
+hduser@bmsce-Precision-T1700:~$ sudo nano xyz.txt
+[sudo] password for hduser: 
+hduser@bmsce-Precision-T1700:~$ hdfs dfs -cat /sff/xyz.txt
+cat: `/sff/xyz.txt': No such file or directory
+hduser@bmsce-Precision-T1700:~$ hdfs dfs -cat /xyz.txt
+cat: `/xyz.txt': No such file or directory
+hduser@bmsce-Precision-T1700:~$ sudo nano xyz.txt
+hduser@bmsce-Precision-T1700:~$ hdfs dfs -get /sff/abc.txt /home/hduser/Documents/hadoop
+hduser@bmsce-Precision-T1700:~$ hdfs dfs -put /home/hduser/Desktop/abc.txt /sff/abcd.txt
+hduser@bmsce-Precision-T1700:~$ hdfs dfs -put /home/hduser/Desktop/abc.txt /sfhduser@bmsce-Precision-T1700:~$ hdfs dfs -getmerge /sff/abc.txt /sff/abcd.txt /home/hduser/Documents/hadoop
+getmerge: `/home/hduser/Documents/hadoop': Is a directory
+hduser@bmsce-Precision-T1700:~$ hdfs dfs -getmerge /sff/abc.txt /sff/abcd.txt /home/hduser/Documents/hadoop/trishul.txt
+hduser@bmsce-Precision-T1700:~$ hadoop fs -mv /sff /dff
+hduser@bmsce-Precision-T1700:~$ hadoop fs -ls /dff
+Found 2 items
+-rw-r--r--   1 hduser supergroup         24 2022-06-01 09:36 /dff/abc.txt
+-rw-r--r--   1 hduser supergroup         13 2022-06-01 10:04 /dff/abcd.txt
+
